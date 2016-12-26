@@ -13,6 +13,7 @@
     "crypto": "0.0.3",
     "express": "^4.14.0",
     "fs": "0.0.1-security",
+    "jwt-async": "^1.1.2",
     "mongo": "^0.1.0",
     "mongoose": "^4.7.3",
     "monkey-scale": "0.0.6",
