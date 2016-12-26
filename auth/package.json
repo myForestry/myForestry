@@ -1,0 +1,22 @@
+{
+  "name": "auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "mongo": "^0.1.0",
+    "mongoose": "^4.7.3",
+    "monkey-scale": "0.0.6",
+    "multer": "^1.2.1",
+    "path": "^0.12.7"
+  }
+}
