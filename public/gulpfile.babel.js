@@ -1,12 +1,12 @@
 const paths = {
   styles: {
-    app: './public/src/less/app.less',
-    build: './public/build/css',
-    less: './public/src/less/*.less',
+    app: './src/less/app.less',
+    build: './build/css',
+    less: './src/less/*.less',
   },
   client: {
-    jsx: './public/src/**/*.jsx',
-    js: './public/src/**/*.js',
+    jsx: './src/**/*.jsx',
+    js: './src/**/*.js',
   },
 };
 
@@ -22,7 +22,7 @@ const serve = require('gulp-serve');
 // ----------------------
 // CSS dependencies
 // ----------------------
-const autoprefixer  = require('autoprefixer');
+const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const less = require('gulp-less');
 const postcss = require('gulp-postcss');
@@ -30,7 +30,7 @@ const postcss = require('gulp-postcss');
 // ----------------------
 // Webpack
 // ----------------------
-const webpack       = require('webpack');
+const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
 
 // ----------------------
@@ -38,9 +38,7 @@ const webpackConfig = require('./webpack.config');
 // ----------------------
 gulp.task('serve:client', ['watch:styles', 'watch:client'], serve({
   port: 3000,
-  root: ['public'],
 }));
-
 
 // ----------------------
 // Task watch:styles
