@@ -11,7 +11,6 @@ mongoose.connect('mongodb://localhost/myForestry');
 mongoose.connection.once('connected', function() {
 	console.log("Auth db connection successful");
   User.find({admin: true}, (err,data) => {
-    console.log('admin creds for DEV: ');
     if (data.length === 0) {
       const adm = new User({
         userName: conf.api.auth.default.admin.userName,
@@ -19,10 +18,7 @@ mongoose.connection.once('connected', function() {
         admin: true
       });
       adm.save();
-      console.log(adm);
-    } else {
-      console.log(data);
-    }
+    } 
   });
 });
 
@@ -44,4 +40,8 @@ module.exports.find = (user) => {
 			}
 	  });
 	});
+};
+
+module.exports.create = (user) => {
+
 };
