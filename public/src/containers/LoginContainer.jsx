@@ -2,16 +2,38 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Login } from '../components';
+import * as AuthActions from '../actions/AuthActions';
 
 class LoginContainer extends React.Component {
   static displayName = 'Login Container';
 
-  static propTypes = {};
+  static propTypes = {
+    login: React.PropTypes.func,
+  };
 
-  state = {};
+  state = {
+    password: '',
+    username: '',
+  };
+
+  handleChange = (name, value) => {
+    const newState = {};
+
+    newState[name] = value;
+
+    this.setState(newState);
+  }
+
+  handleLoginClick = () => {
+    console.log('this state', this.state);
+    return this.props.login(this.state);
+  }
 
   render() {
-    const props = {};
+    const props = {
+      handleChange: this.handleChange,
+      handleLoginClick: this.handleLoginClick,
+    };
 
     return (
       <Login {...props} />
@@ -20,6 +42,7 @@ class LoginContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
+  console.log('state in mapp', state);
   const { example } = state;
   return {
     // example: example.examples,
@@ -28,7 +51,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    // example: bindActionCreators(ExampleActions.exampleFunction, dispatch),
+    login: bindActionCreators(AuthActions.login, dispatch),
   };
 }
 

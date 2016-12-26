@@ -1,19 +1,20 @@
 import React from 'react';
+import { Button, Input } from '../patterns';
 
 const Login = (props) => {
+  const {
+    handleChange,
+    handleLoginClick,
+  } = props;
+
   return (
     <form className="app-login">
-      <div className="form-group">
-        <label htmlFor="button">Username / Email</label>
-        <input type="text" className="form-control" />
-      </div>
-      <div className="form-group">
-        <label htmlFor="button">Password</label>
-        <input type="password" className="form-control" />
-      </div>
+      <Input name="username" label="Username / Email" onChange={handleChange} />
+      <Input name="password" label="Password" onChange={handleChange} />
+
       <div className="app-login__button__group">
-        <button className="btn btn-link">Register</button>
-        <button className="btn btn-primary">Login</button>
+        <Button onClick={console.log('redirect to register.')} type="link">Register</Button>
+        <Button onClick={handleLoginClick} type="primary">Login</Button>
       </div>
     </form>
   );
@@ -21,6 +22,9 @@ const Login = (props) => {
 
 Login.displayName = 'Login';
 
-Login.propTypes = {};
+Login.propTypes = {
+  handleChange: React.PropTypes.func,
+  handleLoginClick: React.PropTypes.func,
+};
 
 export default Login;
