@@ -29371,7 +29371,16 @@
 	  return _react2.default.createElement(
 	    "div",
 	    { className: "app-header" },
-	    "Hello from Header"
+	    _react2.default.createElement(
+	      "div",
+	      { className: "app-header__title" },
+	      "myForestry"
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "app-header__logo" },
+	      _react2.default.createElement("i", { className: "fa fa-tree", "aria-hidden": "true" })
+	    )
 	  );
 	};
 
@@ -29402,17 +29411,44 @@
 	    _react2.default.createElement(
 	      "div",
 	      { className: "app-navigation__item" },
-	      "X"
+	      _react2.default.createElement(
+	        "div",
+	        { className: "app-navigation__item__icon" },
+	        _react2.default.createElement("i", { className: "fa fa-home", "aria-hidden": "true" })
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "app-navigation__item__title" },
+	        "Home"
+	      )
 	    ),
 	    _react2.default.createElement(
 	      "div",
 	      { className: "app-navigation__item" },
-	      "Y"
+	      _react2.default.createElement(
+	        "div",
+	        { className: "app-navigation__item__icon" },
+	        _react2.default.createElement("i", { className: "fa fa-cog", "aria-hidden": "true" })
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "app-navigation__item__title" },
+	        "Settings"
+	      )
 	    ),
 	    _react2.default.createElement(
 	      "div",
 	      { className: "app-navigation__item" },
-	      "Z"
+	      _react2.default.createElement(
+	        "div",
+	        { className: "app-navigation__item__icon" },
+	        _react2.default.createElement("i", { className: "fa fa-search", "aria-hidden": "true" })
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "app-navigation__item__title" },
+	        "Search"
+	      )
 	    )
 	  );
 	};
