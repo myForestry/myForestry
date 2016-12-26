@@ -5,34 +5,21 @@ const Navigation = (props) => {
     handleRedirect,
     navigationItems,
   } = props;
-  console.log('navigationItems', navigationItems);
+
+  const renderNavigationItem = (item, key) => {
+    return (
+      <div key={key} onClick={() => handleRedirect(`${item.route}`)} className="app-navigation__item">
+        <div className="app-navigation__item__icon">
+          <i className={`fa fa-${item.icon}`} aria-hidden="true"></i>
+        </div>
+        <div className="app-navigation__item__title">{item.title}</div>
+      </div>
+    );
+  }
 
   return (
     <div className="app-navigation">
-      <div onClick={() => handleRedirect('/home')} className="app-navigation__item">
-        <div className="app-navigation__item__icon">
-          <i className="fa fa-home" aria-hidden="true"></i>
-        </div>
-        <div className="app-navigation__item__title">Home</div>
-      </div>
-      <div className="app-navigation__item">
-        <div className="app-navigation__item__icon">
-          <i className="fa fa-user" aria-hidden="true"></i>
-        </div>
-        <div className="app-navigation__item__title">Profile</div>
-      </div>
-      <div className="app-navigation__item">
-        <div className="app-navigation__item__icon">
-          <i className="fa fa-cog" aria-hidden="true"></i>
-        </div>
-        <div className="app-navigation__item__title">Settings</div>
-      </div>
-      <div className="app-navigation__item">
-        <div className="app-navigation__item__icon">
-          <i className="fa fa-search" aria-hidden="true"></i>
-        </div>
-        <div className="app-navigation__item__title">Search</div>
-      </div>
+      {navigationItems.map(renderNavigationItem)}
     </div>
   );
 };

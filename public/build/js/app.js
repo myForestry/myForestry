@@ -28961,8 +28961,8 @@
 	var routes = {
 	  path: '/',
 	  component: _containers.App,
-	  indexRoute: { component: _containers.SettingsContainer },
-	  childRoutes: [{ path: '/home', component: _containers.HomeContainer }]
+	  indexRoute: { component: _containers.HomeContainer },
+	  childRoutes: [{ path: '/home', component: _containers.HomeContainer }, { path: '/profile', component: _containers.ProfileContainer }, { path: '/search', component: _containers.SearchContainer }, { path: '/settings', component: _containers.SettingsContainer }]
 	};
 
 	exports.default = routes;
@@ -29275,7 +29275,7 @@
 /* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -29291,69 +29291,30 @@
 	  var handleRedirect = props.handleRedirect,
 	      navigationItems = props.navigationItems;
 
-	  console.log('navigationItems', navigationItems);
+
+	  var renderNavigationItem = function renderNavigationItem(item, key) {
+	    return _react2.default.createElement(
+	      "div",
+	      { key: key, onClick: function onClick() {
+	          return handleRedirect("" + item.route);
+	        }, className: "app-navigation__item" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "app-navigation__item__icon" },
+	        _react2.default.createElement("i", { className: "fa fa-" + item.icon, "aria-hidden": "true" })
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "app-navigation__item__title" },
+	        item.title
+	      )
+	    );
+	  };
 
 	  return _react2.default.createElement(
-	    'div',
-	    { className: 'app-navigation' },
-	    _react2.default.createElement(
-	      'div',
-	      { onClick: function onClick() {
-	          return handleRedirect('/home');
-	        }, className: 'app-navigation__item' },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'app-navigation__item__icon' },
-	        _react2.default.createElement('i', { className: 'fa fa-home', 'aria-hidden': 'true' })
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'app-navigation__item__title' },
-	        'Home'
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'app-navigation__item' },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'app-navigation__item__icon' },
-	        _react2.default.createElement('i', { className: 'fa fa-user', 'aria-hidden': 'true' })
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'app-navigation__item__title' },
-	        'Profile'
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'app-navigation__item' },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'app-navigation__item__icon' },
-	        _react2.default.createElement('i', { className: 'fa fa-cog', 'aria-hidden': 'true' })
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'app-navigation__item__title' },
-	        'Settings'
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'app-navigation__item' },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'app-navigation__item__icon' },
-	        _react2.default.createElement('i', { className: 'fa fa-search', 'aria-hidden': 'true' })
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'app-navigation__item__title' },
-	        'Search'
-	      )
-	    )
+	    "div",
+	    { className: "app-navigation" },
+	    navigationItems.map(renderNavigationItem)
 	  );
 	};
 
@@ -29774,13 +29735,13 @@
 	  var example = state.example;
 
 	  return {
-	    example: example.examples
+	    // example: example.examples,
 	  };
 	}
 
 	function mapDispatchToProps(dispatch) {
 	  return {
-	    example: (0, _redux.bindActionCreators)(ExampleActions.exampleFunction, dispatch)
+	    // example: bindActionCreators(ExampleActions.exampleFunction, dispatch),
 	  };
 	}
 
@@ -29855,13 +29816,13 @@
 	  var example = state.example;
 
 	  return {
-	    example: example.examples
+	    // example: example.examples,
 	  };
 	}
 
 	function mapDispatchToProps(dispatch) {
 	  return {
-	    example: (0, _redux.bindActionCreators)(ExampleActions.exampleFunction, dispatch)
+	    // example: bindActionCreators(ExampleActions.exampleFunction, dispatch),
 	  };
 	}
 
