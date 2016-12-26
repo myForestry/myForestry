@@ -8,11 +8,11 @@ const dependencies = [
 
 module.exports = {
   entry: {
-    app: './public/src/app.js',
+    app: './src/app.js',
     vendor: dependencies,
   },
   output: {
-    path: './public/build/js',
+    path: './build/js',
     filename: '[name].js',
   },
   module: {
