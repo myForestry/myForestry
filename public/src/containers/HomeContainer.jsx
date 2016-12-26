@@ -12,11 +12,10 @@ class HomeContainer extends React.Component {
   state = {};
 
   render() {
-    console.log('home rendering?');
     const props = {};
 
     return (
-      <div>Hello world</div>
+      <Home />
     );
   }
 }

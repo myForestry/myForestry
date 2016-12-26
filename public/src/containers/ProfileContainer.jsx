@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import { Profile } from '../components';
 
 class ProfileContainer extends React.Component {
   static displayName = 'Profile Container';
@@ -14,7 +14,7 @@ class ProfileContainer extends React.Component {
     const props = {};
 
     return (
-      <div>Hello from ProfileContainer</div>
+      <Profile {...props} />
     );
   }
 }

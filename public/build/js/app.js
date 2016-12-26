@@ -28962,7 +28962,7 @@
 	  path: '/',
 	  component: _containers.App,
 	  indexRoute: { component: _containers.HomeContainer },
-	  childRoutes: [{ path: '/home', component: _containers.HomeContainer }, { path: '/profile', component: _containers.ProfileContainer }, { path: '/search', component: _containers.SearchContainer }, { path: '/settings', component: _containers.SettingsContainer }]
+	  childRoutes: [{ path: '/home', component: _containers.HomeContainer }, { path: '/login', component: _containers.LoginContainer }, { path: '/profile', component: _containers.ProfileContainer }, { path: '/search', component: _containers.SearchContainer }, { path: '/settings', component: _containers.SettingsContainer }]
 	};
 
 	exports.default = routes;
@@ -28976,7 +28976,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.SettingsContainer = exports.SearchContainer = exports.ProfileContainer = exports.NavigationContainer = exports.HomeContainer = exports.HeaderContainer = exports.App = undefined;
+	exports.SettingsContainer = exports.SearchContainer = exports.ProfileContainer = exports.NavigationContainer = exports.LoginContainer = exports.HomeContainer = exports.HeaderContainer = exports.App = undefined;
 
 	var _App = __webpack_require__(279);
 
@@ -28986,23 +28986,27 @@
 
 	var _HeaderContainer2 = _interopRequireDefault(_HeaderContainer);
 
-	var _HomeContainer = __webpack_require__(288);
+	var _HomeContainer = __webpack_require__(290);
 
 	var _HomeContainer2 = _interopRequireDefault(_HomeContainer);
 
-	var _NavigationContainer = __webpack_require__(289);
+	var _LoginContainer = __webpack_require__(291);
+
+	var _LoginContainer2 = _interopRequireDefault(_LoginContainer);
+
+	var _NavigationContainer = __webpack_require__(292);
 
 	var _NavigationContainer2 = _interopRequireDefault(_NavigationContainer);
 
-	var _ProfileContainer = __webpack_require__(291);
+	var _ProfileContainer = __webpack_require__(294);
 
 	var _ProfileContainer2 = _interopRequireDefault(_ProfileContainer);
 
-	var _SearchContainer = __webpack_require__(292);
+	var _SearchContainer = __webpack_require__(295);
 
 	var _SearchContainer2 = _interopRequireDefault(_SearchContainer);
 
-	var _SettingsContainer = __webpack_require__(293);
+	var _SettingsContainer = __webpack_require__(296);
 
 	var _SettingsContainer2 = _interopRequireDefault(_SettingsContainer);
 
@@ -29011,6 +29015,7 @@
 	exports.App = _App2.default;
 	exports.HeaderContainer = _HeaderContainer2.default;
 	exports.HomeContainer = _HomeContainer2.default;
+	exports.LoginContainer = _LoginContainer2.default;
 	exports.NavigationContainer = _NavigationContainer2.default;
 	exports.ProfileContainer = _ProfileContainer2.default;
 	exports.SearchContainer = _SearchContainer2.default;
@@ -29169,29 +29174,33 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Settings = exports.Search = exports.Profile = exports.Navigation = exports.Home = exports.Header = undefined;
+	exports.Settings = exports.Search = exports.Profile = exports.Navigation = exports.Login = exports.Home = exports.Header = undefined;
 
 	var _Header = __webpack_require__(282);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
-	var _Home = __webpack_require__(283);
+	var _Home = __webpack_require__(284);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _Navigation = __webpack_require__(284);
+	var _Login = __webpack_require__(285);
+
+	var _Login2 = _interopRequireDefault(_Login);
+
+	var _Navigation = __webpack_require__(286);
 
 	var _Navigation2 = _interopRequireDefault(_Navigation);
 
-	var _Profile = __webpack_require__(285);
+	var _Profile = __webpack_require__(287);
 
 	var _Profile2 = _interopRequireDefault(_Profile);
 
-	var _Search = __webpack_require__(286);
+	var _Search = __webpack_require__(288);
 
 	var _Search2 = _interopRequireDefault(_Search);
 
-	var _Settings = __webpack_require__(287);
+	var _Settings = __webpack_require__(289);
 
 	var _Settings2 = _interopRequireDefault(_Settings);
 
@@ -29199,6 +29208,7 @@
 
 	exports.Header = _Header2.default;
 	exports.Home = _Home2.default;
+	exports.Login = _Login2.default;
 	exports.Navigation = _Navigation2.default;
 	exports.Profile = _Profile2.default;
 	exports.Search = _Search2.default;
@@ -29208,7 +29218,7 @@
 /* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -29218,21 +29228,39 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _RouteServices = __webpack_require__(283);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Header = function Header(props) {
 	  return _react2.default.createElement(
-	    "div",
-	    { className: "app-header" },
+	    'div',
+	    { className: 'app-header' },
+	    _react2.default.createElement('div', { className: 'app-header__item' }),
 	    _react2.default.createElement(
-	      "div",
-	      { className: "app-header__title" },
-	      "myForestry"
+	      'div',
+	      { className: 'app-header__item' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'app-header__title' },
+	        'myForestry'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'app-header__logo' },
+	        _react2.default.createElement('i', { className: 'fa fa-tree', 'aria-hidden': 'true' })
+	      )
 	    ),
 	    _react2.default.createElement(
-	      "div",
-	      { className: "app-header__logo" },
-	      _react2.default.createElement("i", { className: "fa fa-tree", "aria-hidden": "true" })
+	      'div',
+	      { className: 'app-header__item' },
+	      _react2.default.createElement(
+	        'div',
+	        { onClick: function onClick() {
+	            return (0, _RouteServices.redirect)('/login');
+	          }, className: 'app-header__login' },
+	        'Login'
+	      )
 	    )
 	  );
 	};
@@ -29243,6 +29271,23 @@
 
 /***/ },
 /* 283 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.redirect = redirect;
+
+	var _reactRouter = __webpack_require__(70);
+
+	function redirect(route) {
+	  return _reactRouter.hashHistory.push(route);
+	}
+
+/***/ },
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29272,7 +29317,70 @@
 	exports.default = Home;
 
 /***/ },
-/* 284 */
+/* 285 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(4);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Login = function Login(props) {
+	  return _react2.default.createElement(
+	    "form",
+	    { className: "app-login" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "form-group" },
+	      _react2.default.createElement(
+	        "label",
+	        { htmlFor: "button" },
+	        "Username / Email"
+	      ),
+	      _react2.default.createElement("input", { type: "text", className: "form-control" })
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "form-group" },
+	      _react2.default.createElement(
+	        "label",
+	        { htmlFor: "button" },
+	        "Password"
+	      ),
+	      _react2.default.createElement("input", { type: "password", className: "form-control" })
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "app-login__button__group" },
+	      _react2.default.createElement(
+	        "button",
+	        { className: "btn btn-link" },
+	        "Register"
+	      ),
+	      _react2.default.createElement(
+	        "button",
+	        { className: "btn btn-primary" },
+	        "Login"
+	      )
+	    )
+	  );
+	};
+
+	Login.displayName = 'Login';
+
+	Login.propTypes = {};
+
+	exports.default = Login;
+
+/***/ },
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29288,7 +29396,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Navigation = function Navigation(props) {
-	  var handleRedirect = props.handleRedirect,
+	  var redirect = props.redirect,
 	      navigationItems = props.navigationItems;
 
 
@@ -29296,7 +29404,7 @@
 	    return _react2.default.createElement(
 	      "div",
 	      { key: key, onClick: function onClick() {
-	          return handleRedirect("" + item.route);
+	          return redirect("" + item.route);
 	        }, className: "app-navigation__item" },
 	      _react2.default.createElement(
 	        "div",
@@ -29319,14 +29427,14 @@
 	};
 
 	Navigation.propTypes = {
-	  handleRedirect: _react2.default.PropTypes.func,
+	  handleActive: _react2.default.PropTypes.func,
 	  navigationItems: _react2.default.PropTypes.array
 	};
 
 	exports.default = Navigation;
 
 /***/ },
-/* 285 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29356,7 +29464,7 @@
 	exports.default = Profile;
 
 /***/ },
-/* 286 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29386,7 +29494,7 @@
 	exports.default = Search;
 
 /***/ },
-/* 287 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29472,7 +29580,7 @@
 	exports.default = Settings;
 
 /***/ },
-/* 288 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29521,14 +29629,9 @@
 	  _createClass(HomeContainer, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log('home rendering?');
 	      var props = {};
 
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        'Hello world'
-	      );
+	      return _react2.default.createElement(_components.Home, null);
 	    }
 	  }]);
 
@@ -29556,7 +29659,86 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(HomeContainer);
 
 /***/ },
-/* 289 */
+/* 291 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(4);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(1);
+
+	var _redux = __webpack_require__(43);
+
+	var _components = __webpack_require__(281);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var LoginContainer = function (_React$Component) {
+	  _inherits(LoginContainer, _React$Component);
+
+	  function LoginContainer() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, LoginContainer);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LoginContainer.__proto__ || Object.getPrototypeOf(LoginContainer)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(LoginContainer, [{
+	    key: 'render',
+	    value: function render() {
+	      var props = {};
+
+	      return _react2.default.createElement(_components.Login, props);
+	    }
+	  }]);
+
+	  return LoginContainer;
+	}(_react2.default.Component);
+
+	LoginContainer.displayName = 'Login Container';
+	LoginContainer.propTypes = {};
+
+
+	function mapStateToProps(state) {
+	  var example = state.example;
+
+	  return {
+	    // example: example.examples,
+	  };
+	}
+
+	function mapDispatchToProps(dispatch) {
+	  return {
+	    // example: bindActionCreators(ExampleActions.exampleFunction, dispatch),
+	  };
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(LoginContainer);
+
+/***/ },
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29575,9 +29757,9 @@
 
 	var _components = __webpack_require__(281);
 
-	var _reactRouter = __webpack_require__(70);
+	var _NavigationConstants = __webpack_require__(293);
 
-	var _NavigationConstants = __webpack_require__(290);
+	var _RouteServices = __webpack_require__(283);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29593,28 +29775,17 @@
 	  _inherits(NavigationContainer, _React$Component);
 
 	  function NavigationContainer() {
-	    var _ref;
-
-	    var _temp, _this, _ret;
-
 	    _classCallCheck(this, NavigationContainer);
 
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = NavigationContainer.__proto__ || Object.getPrototypeOf(NavigationContainer)).call.apply(_ref, [this].concat(args))), _this), _this.handleRedirect = function (route) {
-	      return _reactRouter.hashHistory.push(route);
-	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	    return _possibleConstructorReturn(this, (NavigationContainer.__proto__ || Object.getPrototypeOf(NavigationContainer)).apply(this, arguments));
 	  }
 
 	  _createClass(NavigationContainer, [{
 	    key: 'render',
 	    value: function render() {
-
 	      var props = {
-	        handleRedirect: this.handleRedirect,
-	        navigationItems: _NavigationConstants.navigationItems
+	        navigationItems: _NavigationConstants.navigationItems,
+	        redirect: _RouteServices.redirect
 	      };
 
 	      return _react2.default.createElement(_components.Navigation, props);
@@ -29640,7 +29811,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(NavigationContainer);
 
 /***/ },
-/* 290 */
+/* 293 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29667,7 +29838,7 @@
 	}];
 
 /***/ },
-/* 291 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29685,6 +29856,8 @@
 	var _reactRedux = __webpack_require__(1);
 
 	var _redux = __webpack_require__(43);
+
+	var _components = __webpack_require__(281);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29716,11 +29889,7 @@
 	    value: function render() {
 	      var props = {};
 
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        'Hello from ProfileContainer'
-	      );
+	      return _react2.default.createElement(_components.Profile, props);
 	    }
 	  }]);
 
@@ -29748,7 +29917,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ProfileContainer);
 
 /***/ },
-/* 292 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29766,6 +29935,8 @@
 	var _reactRedux = __webpack_require__(1);
 
 	var _redux = __webpack_require__(43);
+
+	var _components = __webpack_require__(281);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29797,11 +29968,7 @@
 	    value: function render() {
 	      var props = {};
 
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        'Hello from SearchContainer'
-	      );
+	      return _react2.default.createElement(_components.Search, props);
 	    }
 	  }]);
 
@@ -29829,7 +29996,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SearchContainer);
 
 /***/ },
-/* 293 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

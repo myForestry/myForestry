@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Search } from '../components';
+import { Login } from '../components';
 
-class SearchContainer extends React.Component {
-  static displayName = 'Search Container';
+class LoginContainer extends React.Component {
+  static displayName = 'Login Container';
 
   static propTypes = {};
 
@@ -14,7 +14,7 @@ class SearchContainer extends React.Component {
     const props = {};
 
     return (
-      <Search {...props} />
+      <Login {...props} />
     );
   }
 }
@@ -32,4 +32,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);

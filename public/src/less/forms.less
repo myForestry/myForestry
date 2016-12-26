@@ -4,6 +4,7 @@
 
   label {
     margin-bottom: .2rem;
+    color: @color-primary
   }
 
   input, textarea  {
@@ -31,10 +32,10 @@
 }
 
 .btn {
-  border-radius: .4rem;
+  border-radius: 5px;
   padding: .4rem;
   cursor: pointer;
-  border-width: .1rem;
+  border-width: 1px;
   border-style: outset;
 }
 
@@ -56,6 +57,12 @@
 
 .btn-danger {
   .mixin-button-variant(@btn-danger-color, @btn-danger-bg, @btn-danger-border);
+}
+
+.btn-link {
+  .mixin-button-variant(@btn-link-color, @btn-link-bg, @btn-link-border);
+  background-color: inherit;
+  border: none;
 }
 
 .btn-block {
