@@ -3,6 +3,7 @@
   "api": {
     "auth": {
       "port": 5000,
+      "secret": "AJDKKSJK-8SDF4-SDFA4-AS343-ASDFASNKd",
       "default": {
         "admin": {
           "userName": "admin",
