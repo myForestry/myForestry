@@ -11,6 +11,7 @@ module.exports = function(app, config) {
         console.log(data);
     });
   });
+  
 
   app.get('/auth', function(req,res) {
     if (config.environment === "DEV") {
