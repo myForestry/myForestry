@@ -29290,7 +29290,7 @@
 /* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -29304,9 +29304,56 @@
 
 	var Home = function Home(props) {
 	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    'Hello from Home'
+	    "div",
+	    { className: "app-home" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "app-home__header" },
+	      "Welcome"
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "app-home__header__content" },
+	      "myForestry is a lorem ipsum kind of site."
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "app-home__subheader" },
+	      "About this site"
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "app-home__subheader__content" },
+	      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "app-home__preview" },
+	      _react2.default.createElement(
+	        "div",
+	        { className: "app-home__preview__item" },
+	        "some content",
+	        _react2.default.createElement("img", { src: "http://fillmurray.com/200/300", alt: "" })
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "app-home__preview__item" },
+	        "some content",
+	        _react2.default.createElement("img", { src: "http://fillmurray.com/200/300", alt: "" })
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "app-home__preview__item" },
+	        "some content",
+	        _react2.default.createElement("img", { src: "http://fillmurray.com/200/300", alt: "" })
+	      ),
+	      _react2.default.createElement(
+	        "div",
+	        { className: "app-home__preview__item" },
+	        "some content",
+	        _react2.default.createElement("img", { src: "http://fillmurray.com/200/300", alt: "" })
+	      )
+	    )
 	  );
 	};
 
@@ -29467,7 +29514,7 @@
 /* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -29481,9 +29528,27 @@
 
 	var Search = function Search(props) {
 	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    'Hello from Search'
+	    "form",
+	    { className: "app-search" },
+	    _react2.default.createElement(
+	      "div",
+	      { className: "form-group" },
+	      _react2.default.createElement(
+	        "label",
+	        { htmlFor: "button" },
+	        "What are you looking for?"
+	      ),
+	      _react2.default.createElement("input", { type: "text", placeholder: "Tree planting, pinestraw, etc...", className: "form-control" })
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "app-search__button" },
+	      _react2.default.createElement(
+	        "button",
+	        { className: "btn btn-primary btn-block" },
+	        "Search"
+	      )
+	    )
 	  );
 	};
 
