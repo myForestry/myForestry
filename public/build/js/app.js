@@ -29399,7 +29399,21 @@
 	  return _react2.default.createElement(
 	    "div",
 	    { className: "app-navigation" },
-	    "Hello from Navigation"
+	    _react2.default.createElement(
+	      "div",
+	      { className: "app-navigation__item" },
+	      "X"
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "app-navigation__item" },
+	      "Y"
+	    ),
+	    _react2.default.createElement(
+	      "div",
+	      { className: "app-navigation__item" },
+	      "Z"
+	    )
 	  );
 	};
 
