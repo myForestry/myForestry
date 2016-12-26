@@ -29458,12 +29458,32 @@
 	          { htmlFor: "button" },
 	          "Label"
 	        ),
-	        _react2.default.createElement("input", { type: "text", className: "form-control" }),
-	        _react2.default.createElement(
-	          "button",
-	          { className: "btn btn-primary" },
-	          "Button Primary"
-	        )
+	        _react2.default.createElement("input", { type: "text", className: "form-control" })
+	      ),
+	      _react2.default.createElement(
+	        "button",
+	        { className: "btn btn-primary" },
+	        "Button Primary"
+	      ),
+	      _react2.default.createElement(
+	        "button",
+	        { className: "btn btn-secondary" },
+	        "Button Secondary"
+	      ),
+	      _react2.default.createElement(
+	        "button",
+	        { className: "btn btn-warning" },
+	        "Button Warning"
+	      ),
+	      _react2.default.createElement(
+	        "button",
+	        { className: "btn btn-danger" },
+	        "Button Danger"
+	      ),
+	      _react2.default.createElement(
+	        "button",
+	        { className: "btn btn-default" },
+	        "Button Default"
 	      )
 	    )
 	  );
