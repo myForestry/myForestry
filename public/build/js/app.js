@@ -36017,14 +36017,30 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	// import ReactDOM from 'react-dom';
+
 
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
 
 	  function App() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
 	    _classCallCheck(this, App);
 
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.handleHamburger = function () {
+	      var overlayContainer = document.createElement('div');
+	      document.body.insertBefore(overlayContainer, document.body.childNodes[0]);
+	      document.body.classList.add('overlay');
+	      document.getElementById("app-header-navigation-menu").style.width = "50%";
+	      // ReactDOM.render(<div className="app-header-navigation-menu">Hey worlds</div>, overlayContainer)
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
 	  _createClass(App, [{
@@ -36033,7 +36049,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'app' },
-	        _react2.default.createElement(_.HeaderContainer, null),
+	        _react2.default.createElement(_.HeaderContainer, { handleHamburger: this.handleHamburger }),
 	        _react2.default.createElement(_.NavigationContainer, null),
 	        _react2.default.createElement(
 	          'div',
@@ -36106,7 +36122,9 @@
 	  _createClass(HeaderContainer, [{
 	    key: 'render',
 	    value: function render() {
-	      var props = {};
+	      var props = {
+	        handleHamburger: this.props.handleHamburger
+	      };
 
 	      return _react2.default.createElement(_components.Header, props);
 	    }
@@ -36115,7 +36133,9 @@
 	  return HeaderContainer;
 	}(_react2.default.Component);
 
-	HeaderContainer.propTypes = {};
+	HeaderContainer.propTypes = {
+	  handleHamburger: _react2.default.PropTypes.func
+	};
 
 
 	function mapStateToProps(state) {
@@ -36198,10 +36218,72 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Header = function Header(props) {
+	  var handleHamburger = props.handleHamburger;
+
+
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'app-header' },
 	    _react2.default.createElement('div', { className: 'app-header__item u-sm-h' }),
+	    _react2.default.createElement(
+	      'div',
+	      { id: 'app-header-navigation-menu' },
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        'Hello world'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        'Hello world'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        'Hello world'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        'Hello world'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        'Hello world'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        'Hello world'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        'Hello world'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        'Hello world'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        'Hello world'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        'Hello world'
+	      )
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { onClick: handleHamburger, className: 'app-header__item app-header-navigation u-sm-s' },
+	      _react2.default.createElement('i', { className: 'fa fa-bars', 'aria-hidden': 'true' })
+	    ),
 	    _react2.default.createElement(
 	      'div',
 	      { className: 'app-header__item' },
@@ -36218,7 +36300,7 @@
 	    ),
 	    _react2.default.createElement(
 	      'div',
-	      { className: 'app-header__item u-sm-h' },
+	      { className: 'app-header__item' },
 	      _react2.default.createElement(
 	        'div',
 	        { onClick: function onClick() {
@@ -36226,16 +36308,13 @@
 	          }, className: 'app-header__login' },
 	        'Login'
 	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'app-header__item u-sm-s' },
-	      _react2.default.createElement('i', { className: 'fa fa-bars', 'aria-hidden': 'true' })
 	    )
 	  );
 	};
 
-	Header.propTypes = {};
+	Header.propTypes = {
+	  handleHamburger: _react2.default.PropTypes.func
+	};
 
 	exports.default = Header;
 
