@@ -1,0 +1,20 @@
+{
+  "environment": "DEV",
+  "api": {
+    "auth": {
+      "port": 5000,
+      "default": {
+        "admin": {
+          "userName": "admin",
+          "password": "password"
+        }
+      }
+    },
+    "upload": {
+      "port": 5100
+    },
+    "user": {
+      "port": 5200
+    }
+  }
+}

@@ -2,9 +2,11 @@
   "name": "my-forestry",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "auth/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preinstall": "brew install nginx",
+    "prestart": "sudo cp proxy/proxy.conf ~/../../usr/local/etc/nginx/servers/proxy.conf",
+    "start": "sudo nginx & node auth/index.js & node upload/index.js & node user/index.js"
   },
   "author": "",
   "license": "ISC",
