@@ -1,17 +1,7 @@
 const data = require('./service/data');
-const Business = require('./model/business');
+const enc = require('./service/encrypt');
 
 module.exports = function(app, config) {
-
-  app.post('/auth', function(req,res) {
-    let creds = req.body;
-    Business.find({userName: creds.userName, password: creds.password}, (err,data) => {
-      if (err) console.log(err);
-      if (data.length > 0)
-        console.log(data);
-    });
-  });
-  
 
   app.get('/auth', function(req,res) {
     if (config.environment === "DEV") {
@@ -19,13 +9,19 @@ module.exports = function(app, config) {
     }
   });
 
-  app.get('/auth/:admin', (req,res) => {
-    const admin = data.adminLogin('admin', 'password');
-    if (admin) {
-      res.send(admin);
-    } else {
-      res.send({status: false, message: "incorrect credentials"});
-    }
+  app.post('/auth/login', function(req,res) {
+    let creds = req.body;
+    creds.password = enc.encrypt(creds.password);
+    const result = data.find({userName: creds.userName, password: creds.password});
+    result.then(function(data) {
+      res.json({authenticated: data});
+    }, function(err) {
+      res.json({authenticated: err});
+    })
+  });
+
+  app.post('/auth/create-user', function(req,res) {
+
   });
 
 };
