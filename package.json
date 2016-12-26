@@ -8,6 +8,22 @@
   },
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.5.4",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "cssnano": "^3.9.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-duration": "0.0.0",
+    "gulp-less": "^3.3.0",
+    "gulp-open": "^2.0.0",
+    "gulp-postcss": "^6.2.0",
+    "gulp-serve": "^1.4.0",
+    "webpack": "^1.14.0"
+  },
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
@@ -15,6 +31,14 @@
     "mongodb": "^2.2.16",
     "mongoose": "^4.7.3",
     "multer": "^1.2.1",
-    "path": "^0.12.7"
+    "normalize.css": "^5.0.0",
+    "path": "^0.12.7",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-redux": "^5.0.1",
+    "react-router": "^3.0.0",
+    "react-router-redux": "^4.0.7",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0"
   }
 }
