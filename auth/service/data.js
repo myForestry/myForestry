@@ -18,7 +18,7 @@ mongoose.connection.once('connected', function() {
         admin: true
       });
       adm.save();
-    } 
+    }
   });
 });
 
@@ -29,12 +29,15 @@ module.exports.find = (user) => {
 	  User.findOne({userName: user.userName, password: user.password}, (err,item) => {
 	    if (err) console.log(err);
 			if (item.length != 0) {
-				result = true;
+				result = {
+					userName: user.userName,
+					admin: item.admin
+				};
 			} else {
 				result = false;
 			}
 			if (result != undefined) {
-				resolve(true);
+				resolve(result);
 			} else {
 				reject(false);
 			}

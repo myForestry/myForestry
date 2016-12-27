@@ -1,5 +1,6 @@
 {
   "environment": "DEV",
+  "port": 9000,
   "api": {
     "auth": {
       "port": 5000,

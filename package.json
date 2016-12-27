@@ -4,6 +4,7 @@
   "description": "",
   "main": "auth/index.js",
   "scripts": {
+    "test": "sudo nginx -t",
     "preinstall": "brew install nginx",
     "restart": "sudo cp proxy/proxy.conf ~/../../usr/local/etc/nginx/servers/proxy.conf",
     "prestart": "brew services restart nginx",
