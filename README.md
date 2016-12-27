@@ -1,11 +1,14 @@
+# myForestry
+
 ## Nginx
+Nginx instructions to will be added here soon...
 
 
-## routes
+## Routes
 
 ### Authorization
 ##### /auth/login
-Login route that takes `userName` and `password` parameters. Returns a web token that contains permissions and login time. 
+Login route that takes `userName` and `password` parameters. Returns a web token that contains permissions and login time.
 
 ### Users
 ##### /users
