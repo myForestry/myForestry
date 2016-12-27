@@ -19,4 +19,3 @@ app.listen(app.get('port'), function() {
 });
 
 const routes = require('./routes')(app, config);
-const data = require('./service/data')(app,config);

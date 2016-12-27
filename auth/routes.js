@@ -18,16 +18,16 @@ module.exports = function(app, config) {
 
     creds.password = enc.encrypt(creds.password.toString());
     const result = data.find({userName: creds.userName, password: creds.password});
-    
+
     result.then(function(data) {
       const dt = new Date();
       jwt.sign({
         timeStamp: dt,
-        userName: creds.userName
+        userName: creds.userName,
+        admin: data.admin
       }, function(err,token) {
-        console.log(token);
         res.json({
-          authenticated: data,
+          authenticated: true,
           token: token
         });
       });
@@ -37,8 +37,25 @@ module.exports = function(app, config) {
     })
   });
 
-  app.post('/auth/create-user', function(req,res) {
-    let user = req.body;
+  app.get('/auth/:token', function(req,res) {
+    const token = req.params.token;
+    const jwt = new JWT();
+    jwt.setSecret(config.api.auth.secret);
+
+    jwt.verify(token, function(err,data) {
+      if (err) {
+        res.json({
+          authenticated: false,
+          message: 'Failed to authenticate user'
+        });
+      } else {
+        res.json({
+          authenticated: true,
+          admin: data.claims.admin
+        });
+      }
+    });
+
 
   });
 
