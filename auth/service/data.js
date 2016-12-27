@@ -18,7 +18,7 @@ mongoose.connection.once('connected', function() {
         admin: true
       });
       adm.save();
-    } 
+    }
   });
 });
 
