@@ -3,10 +3,14 @@ import { connect } from 'react-redux';
 import { Header } from '../components';
 
 class HeaderContainer extends React.Component {
-  static propTypes = {};
+  static propTypes = {
+    handleHamburger: React.PropTypes.func,
+  };
 
   render() {
-    const props = {};
+    const props = {
+      handleHamburger: this.props.handleHamburger,
+    };
 
     return (
       <Header {...props} />

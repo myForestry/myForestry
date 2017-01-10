@@ -37,7 +37,7 @@ const webpackConfig = require('./webpack.config');
 // Task serve
 // ----------------------
 gulp.task('serve:client', ['watch:styles', 'watch:client'], serve({
-  port: 3000,
+  port: 8100,
 }));
 
 // ----------------------
