@@ -9,12 +9,12 @@ mongoose.connection.once('connected', function() {
 	console.log("User db connection successful");
 });
 
-
-module.exports.addBusiness = (business) => {
+module.exports.save = (business) => {
 	const bsn = new User({
 		userName: business.userName,
 		password: business.password,
 		admin: false,
+		enabled: true,
 		info: {
 			description: business.description,
 			category: business.category,
@@ -25,14 +25,27 @@ module.exports.addBusiness = (business) => {
 			phone: business.phone
 		}
 	});
-	bsn.save();
+	return bsn.save();
 };
 
-module.exports.getBusinesses = () => {
+module.exports.getAll = () => {
 	return new Promise(function(resolve,reject) {
 		User.find({admin: false}, function(err,data) {
 			if (err) console.log(err);
 			resolve(data);
 		});
 	});
+};
+
+module.exports.find = (id) => {
+	return new Promise(function(resolve,reject) {
+		User.findOne({_id: id}, function(err,data) {
+				if (err) console.log(err);
+				resolve(data);
+		});
+	});
+};
+
+module.exports.update = (business) => {
+	return User.findOneAndUpdate({_id: business.id}, business, {upsert: true});
 };

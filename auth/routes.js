@@ -37,7 +37,9 @@ module.exports = function(app, config) {
     })
   });
 
-  app.get('/auth/:token', function(req,res) {
+
+// ============== private routes ================= //
+  app.get('/:token', function(req,res) {
     const token = req.params.token;
     const jwt = new JWT();
     jwt.setSecret(config.api.auth.secret);
@@ -56,7 +58,13 @@ module.exports = function(app, config) {
       }
     });
 
-
   });
+
+  app.post('/encrypt', function(req,res) {
+    const unencrypted = req.body.data;
+    const encr = enc.encrypt(unencrypted);
+    res.json({encrypted: encr});
+  });
+// ============================================= //
 
 };
