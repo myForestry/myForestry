@@ -1,20 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Navigation } from '../components';
-import { hashHistory } from 'react-router';
 import { navigationItems } from '../constants/NavigationConstants';
-
+import { redirect } from '../services/RouteServices';
 
 class NavigationContainer extends React.Component {
   static propTypes = {};
 
-  handleRedirect = route => hashHistory.push(route);
-
   render() {
-
     const props = {
-      handleRedirect: this.handleRedirect,
       navigationItems,
+      redirect,
     };
 
     return (

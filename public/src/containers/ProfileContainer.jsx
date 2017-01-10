@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import { Profile } from '../components';
 
 class ProfileContainer extends React.Component {
   static displayName = 'Profile Container';
@@ -14,7 +14,7 @@ class ProfileContainer extends React.Component {
     const props = {};
 
     return (
-      <div>Hello from ProfileContainer</div>
+      <Profile {...props} />
     );
   }
 }
@@ -22,13 +22,13 @@ class ProfileContainer extends React.Component {
 function mapStateToProps(state) {
   const { example } = state;
   return {
-    example: example.examples,
+    // example: example.examples,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    example: bindActionCreators(ExampleActions.exampleFunction, dispatch),
+    // example: bindActionCreators(ExampleActions.exampleFunction, dispatch),
   };
 }
 
