@@ -22,5 +22,9 @@
       "port": 5200,
       "server": "localhost"
     }
+  },
+  "client": {
+    "server": "localhost",
+    "port": 8100
   }
 }

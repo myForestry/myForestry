@@ -4,7 +4,7 @@ module.exports = function(app, config) {
 
   ctrl.init(config);
 
-  app.get('/users', function(req,res) {
+  app.get('/users/all', function(req,res) {
     ctrl.allBusinesses().then(function(data) {
       res.send(data);
     });
@@ -18,7 +18,7 @@ module.exports = function(app, config) {
     });
   });
 
-  app.post('/user/new', function(req, res) {
+  app.post('/users/new', function(req, res) {
     const token = req.headers['authorization'];
     ctrl.checkToken(token).then(function(data) {
       if (data === 2) {
@@ -31,7 +31,7 @@ module.exports = function(app, config) {
     });
   });
 
-  app.post('/user/update', function(req,res) {
+  app.post('/users/update', function(req,res) {
     const token = req.headers['authorization'];
     ctrl.checkToken(token).then(function(data) {
       if (data === 2) {

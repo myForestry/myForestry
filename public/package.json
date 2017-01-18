@@ -4,11 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
-    "start": "gulp serve:client"
-=======
+    "start": "gulp serve:client",
     "test": "jest"
->>>>>>> b6b99cc3052ca6892c38abf7adb27bfe7a833141
   },
   "devDependencies": {
     "autoprefixer": "^6.5.4",
