@@ -1,4 +1,4 @@
-.app-navigation {
+#app-navigation {
   background-color: @color-primary;
   bottom: 0;
   position: fixed;
@@ -8,6 +8,8 @@
   display: flex;
   flex-direction: column;
   padding-top: 1rem;
+  transition: 0.5s;
+  z-index: 1000;
 }
 
 .app-navigation__item {
@@ -19,7 +21,6 @@
   align-items: center;
   color: @color-default;
 }
-
 
 .app-navigation__item__title {
   font-size: 1.2rem;

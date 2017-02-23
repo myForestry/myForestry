@@ -5,12 +5,33 @@ import { navigationItems } from '../constants/NavigationConstants';
 import { redirect } from '../services/RouteServices';
 
 class NavigationContainer extends React.Component {
-  static propTypes = {};
+  static propTypes = {
+    handleCloseNavigation: React.PropTypes.func,
+  };
+
+  handleRedirect = (route) => {
+    navigationItems.pop();
+
+    this.props.handleCloseNavigation();
+
+    if (route === 'close') {
+      return;
+    }
+
+    return redirect(route);
+  }
 
   render() {
+    if (this.props.mobileNavigation) {
+      navigationItems.unshift({
+        icon: 'times',
+        route: 'close',
+        title: 'Close',
+      });
+    }
     const props = {
+      handleRedirect: this.props.handleRedirect,
       navigationItems,
-      redirect,
     };
 
     return (

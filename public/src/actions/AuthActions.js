@@ -12,7 +12,7 @@ export function login(payload) {
   } = payload;
 
   return dispatch =>
-    axios.post('/login', {
+    axios.post('/auth/login', {
       username,
       password,
     })

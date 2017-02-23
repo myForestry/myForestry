@@ -36034,12 +36034,28 @@
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.handleHamburger = function () {
-	      var overlayContainer = document.createElement('div');
-	      document.body.insertBefore(overlayContainer, document.body.childNodes[0]);
-	      document.body.classList.add('overlay');
-	      document.getElementById("app-header-navigation-menu").style.width = "50%";
-	      // ReactDOM.render(<div className="app-header-navigation-menu">Hey worlds</div>, overlayContainer)
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+	      mobileNavigation: false
+	    }, _this.handleHamburger = function () {
+	      var appNav = document.getElementById('app-navigation');
+
+	      appNav.style.width = '100%';
+
+	      for (var i = 0; i < appNav.children.length; i++) {
+	        appNav.children[i].style.display = 'flex';
+	      }
+
+	      _this.setState({ mobileNavigation: true });
+	    }, _this.handleCloseNavigation = function () {
+	      var appNav = document.getElementById('app-navigation');
+
+	      appNav.style.width = '0rem';
+
+	      for (var i = 0; i < appNav.children.length; i++) {
+	        appNav.children[i].style.display = 'none';
+	      }
+
+	      _this.setState({ mobileNavigation: false });
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
@@ -36050,7 +36066,7 @@
 	        'div',
 	        { className: 'app' },
 	        _react2.default.createElement(_.HeaderContainer, { handleHamburger: this.handleHamburger }),
-	        _react2.default.createElement(_.NavigationContainer, null),
+	        _react2.default.createElement(_.NavigationContainer, { handleCloseNavigation: this.handleCloseNavigation, mobileNavigation: this.state.mobileNavigation }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'app-content' },
@@ -36227,60 +36243,6 @@
 	    _react2.default.createElement('div', { className: 'app-header__item u-sm-h' }),
 	    _react2.default.createElement(
 	      'div',
-	      { id: 'app-header-navigation-menu' },
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        'Hello world'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        'Hello world'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        'Hello world'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        'Hello world'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        'Hello world'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        'Hello world'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        'Hello world'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        'Hello world'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        'Hello world'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        'Hello world'
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
 	      { onClick: handleHamburger, className: 'app-header__item app-header-navigation u-sm-s' },
 	      _react2.default.createElement('i', { className: 'fa fa-bars', 'aria-hidden': 'true' })
 	    ),
@@ -36290,12 +36252,7 @@
 	      _react2.default.createElement(
 	        'div',
 	        { className: 'app-header__title' },
-	        'myForestry'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'app-header__logo' },
-	        _react2.default.createElement('i', { className: 'fa fa-tree', 'aria-hidden': 'true' })
+	        'Forestry Services'
 	      )
 	    ),
 	    _react2.default.createElement(
@@ -36705,7 +36662,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Navigation = function Navigation(props) {
-	  var redirect = props.redirect,
+	  var handleRedirect = props.handleRedirect,
 	      navigationItems = props.navigationItems;
 
 
@@ -36713,7 +36670,7 @@
 	    return _react2.default.createElement(
 	      "div",
 	      { key: key, onClick: function onClick() {
-	          return redirect("" + item.route);
+	          return handleRedirect(item.route);
 	        }, className: "app-navigation__item" },
 	      _react2.default.createElement(
 	        "div",
@@ -36730,13 +36687,13 @@
 
 	  return _react2.default.createElement(
 	    "div",
-	    { className: "app-navigation" },
+	    { id: "app-navigation" },
 	    navigationItems.map(renderNavigationItem)
 	  );
 	};
 
 	Navigation.propTypes = {
-	  handleActive: _react2.default.PropTypes.func,
+	  handleRedirect: _react2.default.PropTypes.func,
 	  navigationItems: _react2.default.PropTypes.array
 	};
 
@@ -37124,7 +37081,7 @@
 
 
 	  return function (dispatch) {
-	    return _axios2.default.post('/login', {
+	    return _axios2.default.post('/auth/login', {
 	      username: username,
 	      password: password
 	    }).then(function (response) {
@@ -37177,17 +37134,42 @@
 	  _inherits(NavigationContainer, _React$Component);
 
 	  function NavigationContainer() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
 	    _classCallCheck(this, NavigationContainer);
 
-	    return _possibleConstructorReturn(this, (NavigationContainer.__proto__ || Object.getPrototypeOf(NavigationContainer)).apply(this, arguments));
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = NavigationContainer.__proto__ || Object.getPrototypeOf(NavigationContainer)).call.apply(_ref, [this].concat(args))), _this), _this.handleRedirect = function (route) {
+	      _NavigationConstants.navigationItems.pop();
+
+	      _this.props.handleCloseNavigation();
+
+	      if (route === 'close') {
+	        return;
+	      }
+
+	      return (0, _RouteServices.redirect)(route);
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
 	  _createClass(NavigationContainer, [{
 	    key: 'render',
 	    value: function render() {
+	      if (this.props.mobileNavigation) {
+	        _NavigationConstants.navigationItems.unshift({
+	          icon: 'times',
+	          route: 'close',
+	          title: 'Close'
+	        });
+	      }
 	      var props = {
-	        navigationItems: _NavigationConstants.navigationItems,
-	        redirect: _RouteServices.redirect
+	        handleRedirect: this.props.handleRedirect,
+	        navigationItems: _NavigationConstants.navigationItems
 	      };
 
 	      return _react2.default.createElement(_components.Navigation, props);
@@ -37197,7 +37179,9 @@
 	  return NavigationContainer;
 	}(_react2.default.Component);
 
-	NavigationContainer.propTypes = {};
+	NavigationContainer.propTypes = {
+	  handleCloseNavigation: _react2.default.PropTypes.func
+	};
 
 
 	function mapStateToProps(state) {

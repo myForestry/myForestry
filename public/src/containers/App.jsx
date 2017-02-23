@@ -10,19 +10,39 @@ class App extends React.Component {
     children: React.PropTypes.node,
   };
 
+  state = {
+    mobileNavigation: false,
+  }
+
   handleHamburger = () => {
-    const overlayContainer  = document.createElement('div');
-    document.body.insertBefore(overlayContainer, document.body.childNodes[0]);
-    document.body.classList.add('overlay');
-    document.getElementById("app-header-navigation-menu").style.width = "50%";
-    // ReactDOM.render(<div className="app-header-navigation-menu">Hey worlds</div>, overlayContainer)
+    const appNav = document.getElementById('app-navigation');
+
+    appNav.style.width = '100%';
+
+    for (let i = 0; i < appNav.children.length; i++) {
+      appNav.children[i].style.display = 'flex';
+    }
+
+    this.setState({ mobileNavigation: true });
+  }
+
+  handleCloseNavigation = () => {
+    const appNav = document.getElementById('app-navigation');
+
+    appNav.style.width = '0rem';
+
+    for (let i = 0; i < appNav.children.length; i++) {
+      appNav.children[i].style.display = 'none';
+    }
+
+    this.setState({ mobileNavigation: false });
   }
 
   render() {
     return (
       <div className="app">
         <HeaderContainer handleHamburger={this.handleHamburger} />
-        <NavigationContainer />
+        <NavigationContainer handleCloseNavigation={this.handleCloseNavigation} mobileNavigation={this.state.mobileNavigation} />
         <div className="app-content">
           {this.props.children}
         </div>
