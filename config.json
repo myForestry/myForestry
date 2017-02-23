@@ -1,9 +1,11 @@
 {
   "environment": "DEV",
   "port": 9000,
+  "server": "localhost",
   "api": {
     "auth": {
       "port": 5000,
+      "server": "localhost",
       "secret": "AJDKKSJK-8SDF4-SDFA4-AS343-ASDFASNKd",
       "default": {
         "admin": {
@@ -13,10 +15,16 @@
       }
     },
     "upload": {
-      "port": 5100
+      "port": 5100,
+      "server": "localhost"
     },
     "user": {
-      "port": 5200
+      "port": 5200,
+      "server": "localhost"
     }
+  },
+  "client": {
+    "server": "localhost",
+    "port": 8100
   }
 }

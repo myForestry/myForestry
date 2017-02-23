@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
   userName: String,
   password: String,
-  admin: Boolean,
+  admin: {type: Boolean, default: false},
+  enabled: {type: Boolean, default: true},
   info: {
     description: String,
     category: String,

@@ -4,11 +4,7 @@
   "description": "",
   "main": "auth/index.js",
   "scripts": {
-    "test": "sudo nginx -t",
-    "preinstall": "brew install nginx",
-    "restart": "sudo cp proxy/proxy.conf ~/../../usr/local/etc/nginx/servers/proxy.conf",
-    "prestart": "brew services restart nginx",
-    "start": "node auth/index.js & node upload/index.js & node user/index.js"
+    "start": "node auth/index.js & node upload/index.js & node user/index.js & node proxy/index.js & cd public && npm start"
   },
   "author": "",
   "license": "ISC",

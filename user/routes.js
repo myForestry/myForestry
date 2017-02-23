@@ -1,39 +1,45 @@
-const request = require('request');
-const data = require('./service/data');
+const ctrl = require('./controller/userController');
 
 module.exports = function(app, config) {
 
-  app.get('/users', function(req,res) {
-    const prom = data.getBusinesses();
-    prom.then(function(data) {
+  ctrl.init(config);
+
+  app.get('/users/all', function(req,res) {
+    ctrl.allBusinesses().then(function(data) {
       res.send(data);
     });
   });
 
-  app.get('/user/:id', function(req,res) {
-    res.json({user: req.params});
+  app.get('/users/:id', function(req,res) {
+    ctrl.findBusiness(req.params.id).then(function(data) {
+      res.send(data);
+    }).catch(function() {
+      res.status(404).send("User not found");
+    });
   });
 
-  app.post('/user/new', function(req, res) {
+  app.post('/users/new', function(req, res) {
     const token = req.headers['authorization'];
-    const authServer = 'http://localhost:' + config.port + '/auth/:' + token;
-
-    request(authServer, function(err,rs,body) {
-      // -1 error, 0 unauthorized, 1 user, 2 admin
-      if (err) {
-          console.log(err);
-          // return -1;
-      }
-      const jsonBody = JSON.parse(body);
-      if (jsonBody.authenticated) {
-          if (jsonBody.admin) {
-            data.addBusiness(req.body)
-            res.status(200).send('Account has been added.');
-          } else {
-            res.status(401).send('Credentials were not authorized');
-          }
+    ctrl.checkToken(token).then(function(data) {
+      if (data === 2) {
+        ctrl.saveBusiness(req.body).then(function(data) {
+          res.status(200).send("User added.");
+        });
       } else {
-          res.status(403);
+        res.status(403).send("Not Authorized");
+      }
+    });
+  });
+
+  app.post('/users/update', function(req,res) {
+    const token = req.headers['authorization'];
+    ctrl.checkToken(token).then(function(data) {
+      if (data === 2) {
+        ctrl.updateBusiness(req.body).then(function(data) {
+          res.status(200).send("User updated");
+        });
+      } else {
+        res.status(403).send("Not Authorized");
       }
     });
   });
