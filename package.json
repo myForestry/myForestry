@@ -4,7 +4,7 @@
   "description": "",
   "main": "auth/index.js",
   "scripts": {
-    "start": "node auth/index.js & node upload/index.js & node user/index.js & node proxy/index.js & cd public && npm start"
+    "start": "cd api && npm run dev & cd public && npm start"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +16,10 @@
     "mongoose": "^4.7.3",
     "multer": "^1.2.1",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "eslint": "^3.16.1",
+    "eslint-config-google": "^0.7.1",
+    "eslint-plugin-react": "^6.10.0"
   }
 }

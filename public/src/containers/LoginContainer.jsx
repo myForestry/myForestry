@@ -13,7 +13,7 @@ class LoginContainer extends React.Component {
 
   state = {
     password: '',
-    username: '',
+    userName: '',
   };
 
   handleChange = (name, value) => {
