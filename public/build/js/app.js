@@ -36410,7 +36410,7 @@
 	  return _react2.default.createElement(
 	    'form',
 	    { className: 'app-login' },
-	    _react2.default.createElement(_patterns.Input, { name: 'username', label: 'Username / Email', onChange: handleChange }),
+	    _react2.default.createElement(_patterns.Input, { name: 'userName', label: 'Username / Email', onChange: handleChange }),
 	    _react2.default.createElement(_patterns.Input, { name: 'password', label: 'Password', onChange: handleChange }),
 	    _react2.default.createElement(
 	      'div',
@@ -37037,7 +37037,7 @@
 
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LoginContainer.__proto__ || Object.getPrototypeOf(LoginContainer)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
 	      password: '',
-	      username: ''
+	      userName: ''
 	    }, _this.handleChange = function (name, value) {
 	      var newState = {};
 
@@ -37119,12 +37119,12 @@
 	var setUser = exports.setUser = (0, _reduxActions.createAction)(AuthActionTypes.SET_USER);
 
 	function login(payload) {
-	  var username = payload.username,
+	  var userName = payload.userName,
 	      password = payload.password;
 
 
 	  return function (dispatch) {
-	    return _axios2.default.post('/login', {
+	    return _axios2.default.post('/api/login', {
 	      username: username,
 	      password: password
 	    }).then(function (response) {

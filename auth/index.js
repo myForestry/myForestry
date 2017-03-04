@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const monkey = require('monkey-scale');
+//const monkey = require('monkey-scale');
 const fs = require('fs');
 const configData = fs.readFileSync(__dirname + '/../config.json');
 const config = JSON.parse(configData);

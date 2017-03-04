@@ -7,12 +7,12 @@ export const setUser = createAction(AuthActionTypes.SET_USER);
 
 export function login(payload) {
   const {
-    username,
+    userName,
     password,
   } = payload;
 
   return dispatch =>
-    axios.post('/login', {
+    axios.post('/api/login', {
       username,
       password,
     })
