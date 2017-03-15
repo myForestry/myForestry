@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Services } from '../components';
+import { hashHistory } from 'react-router';
 
 class ServicesContainer extends React.Component {
   static displayName = 'ServicesContainer';
@@ -12,8 +13,23 @@ class ServicesContainer extends React.Component {
     activeKey: 1,
   };
 
+  fetchRoute = (id) => {
+    let returnVal = 'foresters';
+
+    switch (id) {
+      case 2:
+        returnVal = 'loggers';
+        break;
+      default:
+        returnVal = 'foresters';
+    }
+
+    return returnVal;
+  }
+
   handleSelect = (id) => {
-    this.setState({ activeKey: id })
+    this.setState({ activeKey: id });
+    hashHistory.push(`/home/${this.fetchRoute(id)}`);
   }
 
   render() {

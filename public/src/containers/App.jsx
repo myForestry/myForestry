@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import HeaderContainer from './HeaderContainer';
 import NavigationContainer from './NavigationContainer';
-import ServicesContainer from './ServicesContainer';
-import AdvertisementsContainer from './AdvertisementsContainer';
 
 class App extends React.Component {
 
@@ -17,13 +15,7 @@ class App extends React.Component {
       <div>
         <HeaderContainer />
         <NavigationContainer />
-        <div className="app-content">
-            <ServicesContainer />
-            <div className="app-content__children">
-              children!
-            </div>
-            <AdvertisementsContainer />
-        </div>
+        {this.props.children}
       </div>
     );
   }
