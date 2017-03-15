@@ -33283,8 +33283,17 @@
 	var Header = function Header(props) {
 	  return _react2.default.createElement(
 	    'div',
-	    null,
-	    'Hello from Header'
+	    { className: 'app-header' },
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      'Forestry Services'
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      'Logo goes here'
+	    )
 	  );
 	};
 
@@ -33313,7 +33322,7 @@
 	var Navigation = function Navigation(props) {
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'navigation' },
+	    { className: 'app-navigation' },
 	    _react2.default.createElement(
 	      'div',
 	      null,
@@ -33342,7 +33351,7 @@
 /* 374 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -33352,54 +33361,60 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _rhinostyle = __webpack_require__(371);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Services = function Services(props) {
+	  var activeKey = props.activeKey,
+	      handleSelect = props.handleSelect;
+
+
 	  return _react2.default.createElement(
-	    "div",
-	    { className: "app-services" },
+	    'div',
+	    { className: 'app-services' },
 	    _react2.default.createElement(
-	      "div",
-	      { className: "app-services__header" },
-	      "Service Categories"
+	      'div',
+	      { className: 'app-services__header' },
+	      'Service Categories'
 	    ),
 	    _react2.default.createElement(
-	      "div",
-	      { className: "app-services__menu" },
+	      _rhinostyle.NavTabs,
+	      { activeKey: activeKey, onSelect: handleSelect, className: 'nav-tabs--stacked app-services__menu' },
 	      _react2.default.createElement(
-	        "div",
-	        { className: "app-services__menu-item" },
-	        "Consulting Foresters"
+	        _rhinostyle.NavTabsItem,
+	        { id: 1, className: 'app-services__menu-item' },
+	        'Consulting Foresters'
 	      ),
 	      _react2.default.createElement(
-	        "div",
-	        { className: "app-services__menu-item" },
-	        "Loggers"
+	        _rhinostyle.NavTabsItem,
+	        { id: 2, className: 'app-services__menu-item' },
+	        'Loggers'
 	      ),
 	      _react2.default.createElement(
-	        "div",
-	        { className: "app-services__menu-item" },
-	        "Herbicide and Compeition Control"
+	        _rhinostyle.NavTabsItem,
+	        { id: 3, className: 'app-services__menu-item' },
+	        'Herbicide and Compeition Control'
 	      ),
 	      _react2.default.createElement(
-	        "div",
-	        { className: "app-services__menu-item" },
-	        "Pinestraw"
+	        _rhinostyle.NavTabsItem,
+	        { id: 4, className: 'app-services__menu-item' },
+	        'Pinestraw'
 	      ),
 	      _react2.default.createElement(
-	        "div",
-	        { className: "app-services__menu-item" },
-	        "Wildlife & Hunting"
+	        _rhinostyle.NavTabsItem,
+	        { id: 5, className: 'app-services__menu-item' },
+	        'Wildlife & Hunting'
 	      ),
 	      _react2.default.createElement(
-	        "div",
-	        { className: "app-services__menu-item" },
-	        "Realty"
+	        _rhinostyle.NavTabsItem,
+	        { id: 6, className: 'app-services__menu-item' },
+	        'Realty'
 	      ),
 	      _react2.default.createElement(
-	        "div",
-	        { className: "app-services__menu-item" },
-	        "Legal and Financial Services"
+	        _rhinostyle.NavTabsItem,
+	        { id: 7, className: 'app-services__menu-item' },
+	        'Legal and Financial Services'
 	      )
 	    )
 	  );
@@ -33534,15 +33549,22 @@
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ServicesContainer.__proto__ || Object.getPrototypeOf(ServicesContainer)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _temp), _possibleConstructorReturn(_this, _ret);
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ServicesContainer.__proto__ || Object.getPrototypeOf(ServicesContainer)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+	      activeKey: 1
+	    }, _this.handleSelect = function (id) {
+	      _this.setState({ activeKey: id });
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
 	  _createClass(ServicesContainer, [{
 	    key: 'render',
 	    value: function render() {
-	      var props = {};
+	      var props = {
+	        activeKey: this.state.activeKey,
+	        handleSelect: this.handleSelect
+	      };
 
-	      return _react2.default.createElement(_components.Services, null);
+	      return _react2.default.createElement(_components.Services, props);
 	    }
 	  }]);
 

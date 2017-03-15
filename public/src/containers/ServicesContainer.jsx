@@ -8,12 +8,21 @@ class ServicesContainer extends React.Component {
 
   static propTypes = {};
 
-  state = {};
+  state = {
+    activeKey: 1,
+  };
+
+  handleSelect = (id) => {
+    this.setState({ activeKey: id })
+  }
 
   render() {
-    const props = {};
+    const props = {
+      activeKey: this.state.activeKey,
+      handleSelect: this.handleSelect,
+    };
 
-    return <Services />;
+    return <Services {...props} />;
   }
 }
 
