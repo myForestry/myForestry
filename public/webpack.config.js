@@ -3,7 +3,7 @@ const path = require('path');
 const dependencies = [
   'react',
   'react-dom',
-  'react-router',
+  'react-router'
 ];
 
 module.exports = {
