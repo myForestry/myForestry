@@ -17,7 +17,8 @@
     "mongodb": "^2.2.16",
     "mongoose": "^4.7.3",
     "multer": "^1.2.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "rcc-cli": "^1.0.12"
   },
   "devDependencies": {
     "eslint": "^3.16.1",
