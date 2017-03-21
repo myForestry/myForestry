@@ -29,6 +29,7 @@ class ServicesContainer extends React.Component {
 
   handleSelect = (id) => {
     this.setState({ activeKey: id });
+
     hashHistory.push(`/home/${this.fetchRoute(id)}`);
   }
 
