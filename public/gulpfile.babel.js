@@ -1,7 +1,7 @@
 const paths = {
   styles: {
     app: './src/less/app.less',
-    build: './build/css',
+    build: './dist/css',
     less: './src/less/*.less',
   },
   client: {
@@ -16,6 +16,8 @@ const paths = {
 const babel = require('gulp-babel');
 const duration = require('gulp-duration');
 const gulp = require('gulp');
+const imagemin = require('gulp-imagemin');
+const svgSprite = require('gulp-svg-sprite');
 const open = require('gulp-open');
 const serve = require('gulp-serve');
 

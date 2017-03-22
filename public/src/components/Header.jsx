@@ -7,14 +7,13 @@ const Header = (props) => {
   } = props;
 
   return (
-    <div className="app-header row">
-      <div className="col-xs-9">
+    <div className="app-header">
+      <div>
         <div>Forestry Services</div>
-        <div>Logo goes here</div>
       </div>
-      <div className="col-xs-3 u-text-right">
+      <div>
         <Button onClick={handleLoginClick} type="link">
-          Login
+          Login / Register
         </Button>
       </div>
     </div>

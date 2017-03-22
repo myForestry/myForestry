@@ -32919,9 +32919,14 @@
 	var routes = {
 	  path: '/',
 	  component: _containers.App,
-	  indexRoute: { component: _containers.HomeContainer },
+	  indexRoute: { onEnter: function onEnter(nextState, replace) {
+	      return replace('/home');
+	    } },
 	  childRoutes: [{
 	    path: '/home',
+	    indexRoute: { onEnter: function onEnter(nextState, replace) {
+	        return replace('/home/1');
+	      } },
 	    component: _containers.HomeContainer,
 	    childRoutes: [{
 	      path: '/home/:id',
@@ -33112,6 +33117,7 @@
 	      password: '',
 	      password2: '',
 	      businessName: '',
+	      description: '',
 	      phone: '',
 	      email: '',
 	      service: 1,
@@ -33146,7 +33152,7 @@
 	      return _react2.default.createElement(
 	        _rhinostyle.Modal,
 	        null,
-	        _react2.default.createElement(_rhinostyle.ModalHeader, { className: 'u-text-center', title: 'Login to Forestry Services' }),
+	        _react2.default.createElement(_rhinostyle.ModalHeader, { onClose: _this.handleClose, className: 'u-text-center', title: 'Login to Forestry Services' }),
 	        _react2.default.createElement(
 	          _rhinostyle.ModalBody,
 	          null,
@@ -33186,6 +33192,7 @@
 	          _react2.default.createElement(_rhinostyle.Input, { type: 'password', label: 'Password', name: 'password', initialValue: _this.state.password, onChange: _this.handleChange }),
 	          _react2.default.createElement(_rhinostyle.Input, { type: 'password', label: 'Retype Password', name: 'password2', initialValue: _this.state.password2, onChange: _this.handleChange }),
 	          _react2.default.createElement(_rhinostyle.Input, { label: 'Business Name', name: 'businessName', initialValue: _this.state.businessName, onChange: _this.handleChange }),
+	          _react2.default.createElement(_rhinostyle.Textarea, { label: 'Business Description', name: 'description', rows: 3 }),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'row' },
@@ -33208,17 +33215,17 @@
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'col-sm-7' },
-	                _react2.default.createElement(_rhinostyle.Input, { placeholder: 'ex. Charleston', initialValue: _this.state.city, onChange: _this.handleChange, label: 'City', name: 'city' })
+	                _react2.default.createElement(_rhinostyle.Input, { className: 'u-m-b-0', placeholder: 'ex. Charleston', initialValue: _this.state.city, onChange: _this.handleChange, label: 'City', name: 'city' })
 	              ),
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'col-sm-2' },
-	                _react2.default.createElement(_rhinostyle.Input, { placeholder: 'ex. SC', initialValue: _this.state.state, onChange: _this.handleChange, label: 'State', name: 'state' })
+	                _react2.default.createElement(_rhinostyle.Input, { className: 'u-m-b-0', placeholder: 'ex. SC', initialValue: _this.state.state, onChange: _this.handleChange, label: 'State', name: 'state' })
 	              ),
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'col-sm-3' },
-	                _react2.default.createElement(_rhinostyle.Input, { placeholder: 'ex. 29403', initialValue: _this.state.zip, onChange: _this.handleChange, label: 'Zip', name: 'zip' })
+	                _react2.default.createElement(_rhinostyle.Input, { className: 'u-m-b-0', placeholder: 'ex. 29403', initialValue: _this.state.zip, onChange: _this.handleChange, label: 'Zip', name: 'zip' })
 	              )
 	            )
 	          )
@@ -33370,28 +33377,23 @@
 
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'app-header row' },
+	    { className: 'app-header' },
 	    _react2.default.createElement(
 	      'div',
-	      { className: 'col-xs-9' },
+	      null,
 	      _react2.default.createElement(
 	        'div',
 	        null,
 	        'Forestry Services'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        'Logo goes here'
 	      )
 	    ),
 	    _react2.default.createElement(
 	      'div',
-	      { className: 'col-xs-3 u-text-right' },
+	      null,
 	      _react2.default.createElement(
 	        _rhinostyle.Button,
 	        { onClick: handleLoginClick, type: 'link' },
-	        'Login'
+	        'Login / Register'
 	      )
 	    )
 	  );
@@ -34062,22 +34064,10 @@
 
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = ServicesContainer.__proto__ || Object.getPrototypeOf(ServicesContainer)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
 	      activeKey: 1
-	    }, _this.fetchRoute = function (id) {
-	      var returnVal = 'foresters';
-
-	      switch (id) {
-	        case 2:
-	          returnVal = 'loggers';
-	          break;
-	        default:
-	          returnVal = 'foresters';
-	      }
-
-	      return returnVal;
 	    }, _this.handleSelect = function (id) {
 	      _this.setState({ activeKey: id });
 
-	      // hashHistory.push(`/home/${this.fetchRoute(id)}`);
+	      _reactRouter.hashHistory.push('/home/' + id);
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 

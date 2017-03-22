@@ -11,6 +11,7 @@ import {
   ModalFooter,
   ModalSystem,
   Select,
+  Textarea,
   UtilityInlineGrid,
 } from 'rhinostyle';
 
@@ -24,6 +25,7 @@ class HeaderContainer extends React.Component {
     password: '',
     password2: '',
     businessName: '',
+    description: '',
     phone: '',
     email: '',
     service: 1,
@@ -73,7 +75,7 @@ class HeaderContainer extends React.Component {
   renderLoginModal = () => {
     return (
       <Modal>
-        <ModalHeader className="u-text-center" title="Login to Forestry Services" />
+        <ModalHeader onClose={this.handleClose} className="u-text-center" title="Login to Forestry Services" />
         <ModalBody>
           <Input label="Username" name="username" initialValue={this.state.username} onChange={this.handleChange} />
           <Input type="password" className="u-m-b-0" label="Password" name="password" initialValue={this.state.password} onChange={this.handleChange} />
@@ -104,6 +106,7 @@ class HeaderContainer extends React.Component {
           <Input type="password" label="Password" name="password" initialValue={this.state.password} onChange={this.handleChange} />
           <Input type="password" label="Retype Password" name="password2" initialValue={this.state.password2} onChange={this.handleChange} />
           <Input label="Business Name" name="businessName" initialValue={this.state.businessName} onChange={this.handleChange} />
+          <Textarea label="Business Description" name="description" rows={3} />
           <div className="row">
             <Input className="col-sm-6" label="Phone" name="phone" initialValue={this.state.phoneNumber} onChange={this.handleChange} />
             <Input className="col-sm-6" label="Email" name="email" initialValue={this.state.emailAddress} onChange={this.handleChange} />
@@ -116,15 +119,15 @@ class HeaderContainer extends React.Component {
            <Input placeholder="ex. 1 King St." initialValue={this.state.street} onChange={this.handleChange} label="Address" name="street" />
            <div className="row row--condensed">
              <div className="col-sm-7">
-               <Input placeholder="ex. Charleston" initialValue={this.state.city} onChange={this.handleChange} label="City" name="city" />
+               <Input className="u-m-b-0" placeholder="ex. Charleston" initialValue={this.state.city} onChange={this.handleChange} label="City" name="city" />
              </div>
              <div className="col-sm-2">
-               <Input placeholder="ex. SC" initialValue={this.state.state} onChange={this.handleChange} label="State" name="state" />
+               <Input className="u-m-b-0" placeholder="ex. SC" initialValue={this.state.state} onChange={this.handleChange} label="State" name="state" />
              </div>
              <div className="col-sm-3">
-               <Input placeholder="ex. 29403" initialValue={this.state.zip} onChange={this.handleChange} label="Zip" name="zip" />
+               <Input className="u-m-b-0" placeholder="ex. 29403" initialValue={this.state.zip} onChange={this.handleChange} label="Zip" name="zip" />
              </div>
-           </div>
+            </div>
            </div>
         </ModalBody>
         <ModalFooter>

@@ -13,24 +13,10 @@ class ServicesContainer extends React.Component {
     activeKey: 1,
   };
 
-  fetchRoute = (id) => {
-    let returnVal = 'foresters';
-
-    switch (id) {
-      case 2:
-        returnVal = 'loggers';
-        break;
-      default:
-        returnVal = 'foresters';
-    }
-
-    return returnVal;
-  }
-
   handleSelect = (id) => {
     this.setState({ activeKey: id });
 
-    // hashHistory.push(`/home/${this.fetchRoute(id)}`);
+    hashHistory.push(`/home/${id}`);
   }
 
   render() {

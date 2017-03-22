@@ -12,7 +12,7 @@ module.exports = {
     vendor: dependencies,
   },
   output: {
-    path: './build/js',
+    path: './dist/js',
     filename: '[name].js',
   },
   module: {

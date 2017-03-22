@@ -9,10 +9,11 @@ import {
 const routes = {
   path: '/',
   component: App,
-  indexRoute: { component: HomeContainer },
+  indexRoute: { onEnter: (nextState, replace) => replace('/home') },
   childRoutes: [
     {
       path: '/home',
+      indexRoute: { onEnter: (nextState, replace) => replace('/home/1') },
       component: HomeContainer,
       childRoutes: [
         {
