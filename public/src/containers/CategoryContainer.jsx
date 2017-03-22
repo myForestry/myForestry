@@ -9,18 +9,18 @@ class CategoryContainer extends React.Component {
   static propTypes = {};
 
   state = {
-    category: this.props.params.id,
+    // category: this.props.params.id,
   };
 
   componentWillReceiveProps(newProps) {
-    if (newProps.params.id !== this.props.params.id) {
-      this.setState({ category: newProps.params.id });
-    }
+    // if (newProps.params.id !== this.props.params.id) {
+    //   this.setState({ category: newProps.params.id });
+    // }
   }
 
   render() {
     const props = {
-      category: this.state.category,
+      // category: this.state.category,
     };
 
     return (

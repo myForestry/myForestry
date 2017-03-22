@@ -2,12 +2,12 @@ import React from 'react';
 
 const Category = (props) => {
   const {
-    category,
+    // category,
   } = props;
 
   return (
     <div>
-      <h3>{category}</h3>
+      <h3>Hello from category component</h3>
     </div>
   );
 };
